@@ -68,7 +68,7 @@
         <label for="imagen">Imagen</label>
             <img src="/storage/{{$receta->imagen}}" class="d-flex img-thumbnail img-fluid mx-auto">
 
-        <input type="file" name='imagen' class="form-control" id="imagen" placeholder="'Pan Casero'">
+        <input type="file" name='imagen' class="form-control-file" id="imagen" placeholder="'Pan Casero'">
       </div>
       @error('imagen')
         <div class="invalid-feedback d-block w-50 mx-auto" role="alert">

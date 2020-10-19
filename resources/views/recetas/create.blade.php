@@ -64,7 +64,7 @@
       
       <div class="form-group w-50 mx-auto">
         <label for="imagen">Imagen</label>
-      <input type="file" name='imagen' class="form-control" id="imagen" value="{{old('imagen')}}" placeholder="'Pan Casero'">
+      <input type="file" name='imagen' class="form-control-file" id="imagen" value="{{old('imagen')}}" placeholder="'Pan Casero'">
       </div>
       @error('imagen')
       <div class="invalid-feedback d-block w-50 mx-auto" role="alert">

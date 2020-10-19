@@ -56,9 +56,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('recetasCreate') }}"> Crear Recetas </a>
-                                    <a class="dropdown-item" href="{{ route('recetasIndex') }}"> Ver Recetas </a>
-                                    
+                                    <a class="dropdown-item" href="{{ route('perfilShow', ['perfil' => Auth::user()->perfil ]) }}">Perfil</a>
+                                    <a class="dropdown-item" href="{{ route('recetasIndex') }}">Receta</a>
+                                    <a class="dropdown-item" href="{{ route('recetasCreate') }}">Crear Receta</a>                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

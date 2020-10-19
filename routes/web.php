@@ -17,6 +17,10 @@ use Illuminate\Routing\RedirectController;
 
 Route::get('/', 'RecetaController@index');
 
+Route::get('/home', function () {
+        return view('home');
+});
+
 Auth::routes();
 
 Route::get('/recetas', 'RecetaController@index')->name('recetasIndex');
@@ -26,4 +30,9 @@ Route::get('/recetas/{receta}', 'RecetaController@show')->name('recetasShow');
 Route::get('/recetas/{receta}/edit', 'RecetaController@edit')->name('recetasEdit');
 Route::put('/recetas/{receta}', 'RecetaController@update')->name('recetasUpdate');
 Route::delete('/recetas/{receta}', 'RecetaController@destroy')->name('recetasDestroy');
+
+Route::get('/perfil/{perfil}', 'PerfilController@show')->name('perfilShow');
+Route::get('/perfil/{perfil}/edit', 'PerfilController@edit')->name('perfilEdit');
+Route::patch('/perfil/{perfil}', 'PerfilController@update')->name('perfilUpdate');
+
 
