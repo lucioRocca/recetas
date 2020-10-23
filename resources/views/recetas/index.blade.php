@@ -13,15 +13,19 @@
         </thead>
         <tbody>            
             @php
-                $i=0
+                $contadorRecetas=0
             @endphp
+
+
             @foreach ($recetas as $receta)
             <tr class="text-center row">
+            
                 @php
-                    $i = $i+1
+                    //contador de recetas del usuario
+                    $contadorRecetas = $contadorRecetas+1
                 @endphp
 
-                <th class="col d-flex align-items-center justify-content-center">{{$i}}</th>
+                <th class="col d-flex align-items-center justify-content-center">{{$contadorRecetas}}</th>
                 <td class="col d-flex align-items-center justify-content-center">{{$receta->nombre}}</td>
                 <td class="col d-flex align-items-center justify-content-center">{{$receta->categoria->categoria}}</td>
                 <td class="col">
@@ -41,7 +45,7 @@
                     <form action={{route('recetasDestroy', ['receta' => $receta])}} id='form-eliminar' method="POST">
                         @csrf
                         @method('delete')
-                        <button type="submit" form="form-eliminar" class="btn btn-danger w-100" value="Eliminar">
+                        <button type="submit" form="form-eliminar" class="btn btn-danger w-100" >
                             Eliminar&nbsp
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
@@ -55,6 +59,7 @@
     </table>
     
      @php
+        // Verificar si se actualizo, guardo o elimino un usuario previamente (datos enviados por get)
         if(isset($storeNombre)){
             $html = "<div class='alert alert-success w-50 mx-auto text-center' role='alert'>La Receta ''". $storeNombre ."'' se agrego correctamente</div>";
             echo $html;
@@ -68,8 +73,12 @@
             echo $html;
         }
      @endphp
-     
-     <div class= "row">
+    
+    <div class= "row">
         <a class='btn btn-outline-dark w-25 mx-auto' href={{route('recetasCreate')}}>Añadir Nueva Receta</a>
+    </div>
+
+    <div class= "row mt-3 d-flex justify-content-center">
+        <div>{{$recetas->links()}}</div>
     </div>
 @endsection

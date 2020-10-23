@@ -15,11 +15,8 @@ use Illuminate\Routing\RedirectController;
 |
 */
 
-Route::get('/', 'RecetaController@index');
+Route::get('/', 'HomeController@index');
 
-Route::get('/home', function () {
-        return view('home');
-});
 
 Auth::routes();
 
@@ -34,5 +31,7 @@ Route::delete('/recetas/{receta}', 'RecetaController@destroy')->name('recetasDes
 Route::get('/perfil/{perfil}', 'PerfilController@show')->name('perfilShow');
 Route::get('/perfil/{perfil}/edit', 'PerfilController@edit')->name('perfilEdit');
 Route::patch('/perfil/{perfil}', 'PerfilController@update')->name('perfilUpdate');
+
+Route::put('/likes/{receta}', 'likesController@update')->name('likesUpdate');
 
 

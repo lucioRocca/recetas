@@ -28,9 +28,11 @@ class RecetaController extends Controller
     
      public function index()
     {
+        $id = auth()->user()->id;
+        $recetas = Receta::where('user_id', $id)->paginate(5);
+
         if(isset($_GET['storeNombre'])){
-        
-            $recetas = Auth::user()->recetas;
+            
             $storeNombre = $_GET['storeNombre'];
             return view('recetas.index', compact('recetas', 'storeNombre'));
 
@@ -38,7 +40,6 @@ class RecetaController extends Controller
 
         if(isset($_GET['updateNombre'])){
         
-            $recetas = Auth::user()->recetas;
             $updateNombre = $_GET['updateNombre'];
             return view('recetas.index', compact('recetas', 'updateNombre'));
 
@@ -46,13 +47,11 @@ class RecetaController extends Controller
         
         if(isset($_GET['deleteNombre'])){
         
-            $recetas = Auth::user()->recetas;
             $deleteNombre = $_GET['deleteNombre'];
             return view('recetas.index', compact('recetas', 'deleteNombre'));
 
         }
 
-        $recetas = Auth::user()->recetas;
         return view('recetas.index', compact('recetas'));
         
     }
@@ -111,7 +110,9 @@ class RecetaController extends Controller
      */
     public function show(Receta $receta)
     {
-        return view('recetas.show', compact('receta'));
+        $like = (auth()->user()) ? auth()->user()->like->contains($receta->id) : false;
+        
+        return view('recetas.show', compact('receta', 'like'));
     }
 
     /**
