@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Receta;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
@@ -14,5 +16,6 @@ class LikesController extends Controller
 
         return redirect(route('recetasShow', ['receta' => $receta]));
     }
+
 
 }

@@ -39,6 +39,7 @@ class User extends Authenticatable
 
     
     protected static function boot(){
+        
         parent::boot();
 
         static::created(
@@ -60,6 +61,7 @@ class User extends Authenticatable
         
         return $this->belongsToMany(Receta::class, 'likes', 'user_id', 'recetas_id');
     }
+    
     
     public function perfil(){
 

@@ -23,7 +23,7 @@ class RecetaSeeder extends Seeder
         DB::table('recetas')->insert([
             'nombre'=> 'receta 1',
             'ingredientes'=> 'Pan, Leche, Huevo, Azucar',
-            'imagen'=> 'img1.jpg',
+            'imagen'=> 'upload-recetas/6yi4rgH0o8x4ZvOH1IAZKSJnRKYbFGCqTxuFv7Sh.jpeg',
             'preparacion'=> 'batir 1',
             'user_id'=> 1,
             'categoria_id'=> 1
@@ -32,7 +32,7 @@ class RecetaSeeder extends Seeder
         DB::table('recetas')->insert([
             'nombre'=> 'receta 2',
             'ingredientes'=> 'Leche, Huevo, Azucar',
-            'imagen'=> 'img1.jpg',
+            'imagen'=> 'upload-recetas/6yi4rgH0o8x4ZvOH1IAZKSJnRKYbFGCqTxuFv7Sh.jpeg',
             'preparacion'=> 'batir 2',
             'user_id'=> 1,
             'categoria_id'=> 2
@@ -42,7 +42,7 @@ class RecetaSeeder extends Seeder
         DB::table('recetas')->insert([
             'nombre'=> 'receta 3',
             'ingredientes'=> 'Huevo, Azucar',
-            'imagen'=> 'img1.jpg',
+            'imagen'=> 'upload-recetas/6yi4rgH0o8x4ZvOH1IAZKSJnRKYbFGCqTxuFv7Sh.jpeg',
             'preparacion'=> 'batir 3',
             'user_id'=> 2,
             'categoria_id'=> 1
@@ -52,7 +52,7 @@ class RecetaSeeder extends Seeder
         DB::table('recetas')->insert([
             'nombre'=> 'receta 4',
             'ingredientes'=> 'Azucar',
-            'imagen'=> 'img1.jpg',
+            'imagen'=> 'upload-recetas/6yi4rgH0o8x4ZvOH1IAZKSJnRKYbFGCqTxuFv7Sh.jpeg',
             'preparacion'=> 'batir 4',
             'user_id'=> 1,
             'categoria_id'=> 1

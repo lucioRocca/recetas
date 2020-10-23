@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 
 <div class="container">
@@ -66,10 +67,11 @@
             </div>
 
         </div>
-        <form action={{route('likesUpdate', ['receta' => $receta])}} id="form-like" class="d-flex justify-content-center mt-5" method="POST">
+        
+        <form action={{route('likesUpdate', ['receta' => $receta])}} id="form-like" class="mt-5" method="POST">
             @method('PUT')
             @csrf
-            <button type="submit" form="form-like" >
+            <button type="submit" class="float-left" form="form-like" >
 
                 @if ($like)
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-suit-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +84,9 @@
                 @endif
             </button>
         </form>
+        <a class="btn btn-dark float-right" href={{route('recetasPdf', ['receta'=> $receta])}}> Descargar PDF</a>
+        
+
     </div>
 
 </div>

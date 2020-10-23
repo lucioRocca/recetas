@@ -27,6 +27,8 @@ Route::get('/recetas/{receta}', 'RecetaController@show')->name('recetasShow');
 Route::get('/recetas/{receta}/edit', 'RecetaController@edit')->name('recetasEdit');
 Route::put('/recetas/{receta}', 'RecetaController@update')->name('recetasUpdate');
 Route::delete('/recetas/{receta}', 'RecetaController@destroy')->name('recetasDestroy');
+Route::get('/pdf/{receta}', 'RecetaController@pdf')->name('recetasPdf');
+
 
 Route::get('/perfil/{perfil}', 'PerfilController@show')->name('perfilShow');
 Route::get('/perfil/{perfil}/edit', 'PerfilController@edit')->name('perfilEdit');

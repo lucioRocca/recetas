@@ -1,24 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\User;
-use App\Prueba;
 use App\Receta;
 use App\CategoriaReceta;
-use Illuminate\Auth\Middleware\Authorize;
+use PDF;
 use Illuminate\Http\Request;
-use Laravel\Ui\Presets\React;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
-use Illuminate\Cache\RedisTaggedCache;
-use Illuminate\Support\Facades\Redirect;
 
 class RecetaController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth');
+      $this->middleware('auth', ['except' => ['show']]);
     }
     /**
      * Display a listing of the resource.
@@ -163,6 +157,13 @@ class RecetaController extends Controller
         return redirect(route('recetasIndex', ['updateNombre'=> $receta->nombre]));
     }
 
+    public function pdf(Receta $receta){
+
+
+        $pdf = PDF::loadView('recetas.showPdf', compact('receta'));
+        return $pdf->download("{$receta->nombre}.pdf");
+
+    }
     /**
      * Remove the specified resource from storage.
      *
