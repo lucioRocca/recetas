@@ -21,7 +21,7 @@ class HomeController extends Controller
       $nuevas = Receta::orderBy('created_at', 'DESC')->paginate(3);
 
       $categorias = CategoriaReceta::all();
-      
+
       $recetasCategorias = array();
 
       foreach($categorias as $categoria){
@@ -29,7 +29,12 @@ class HomeController extends Controller
         $recetasCategorias[$categoria->categoria] = Receta::where('categoria_id', $categoria->id)->paginate(1, ['*'] , Str::slug($categoria->categoria));
 
       }
-      $recetaslike = Auth::user()->like()->paginate(2, ['*'] , 'like');
+
+      if(isset(auth()->user()->id)){
+        $recetaslike = Auth::User()->like()->paginate(1, ['*'] , 'like');
+      }else{
+        $recetaslike = '';
+      }
 
       return view('principal.index', compact('nuevas', 'recetasCategorias', 'recetaslike'));
     }

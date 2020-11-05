@@ -4,31 +4,31 @@
 <div class="container">
     <div class="jumbotron row">
         <div class="col-5 text-center">
-    
+
             @if ($perfil->imagen != '')
                 <div class="d-flex justify-content-center">
                     <img src="/storage/{{$perfil->imagen}}" width="250em" class="d-flex img-fluid mx-auto">
                 </div>
             @else
-            
-                @if (Auth::user()->id === $perfil->usuario->id)
+
+                @if (auth()->user()->id === $perfil->usuario->id)
                     <a href={{route('perfilEdit',['perfil' => $perfil])}} class="btn mx-auto btn-primary">Agregar Imagen</a>
-                
+
                     <div class="mt-5">
                 @else
-                    <div>        
+                    <div>
                 @endif
 
                     <h5 class="text-danger">Nombre:&nbsp</h5>
                     <p>{{$perfil->usuario->name}}</p>
                 </div>
-            
+
             @endif
 
         </div>
 
         <div class="col-7 text-center">
-        
+
             <div>
                 @if ($perfil->descripcion != '')
                     <h5 class="text-danger">Descripción:&nbsp</h5>
@@ -37,11 +37,11 @@
 
                     @if (Auth::user()->id === $perfil->usuario->id)
                         <a href={{route('perfilEdit',['perfil' => $perfil])}} class="btn mx-auto btn-primary">Agregar Descripcion</a>
-                    
-                    @else   
+
+                    @else
                         <h5 class="text-danger">Descripción:&nbsp</h5>
                         <p>El usuario no agrego una descripción</p>
-                    @endif                    
+                    @endif
                 @endif
 
             </div>
@@ -49,23 +49,23 @@
             <div class="mt-5">
                 @if ($perfil->url != '')
                     <h5 class="text-danger">URL:&nbsp</h5>
-                    <p>{{$perfil->url}}</p>
+                    <a href="{{ $perfil->url }}" target="_blank" >{{$perfil->url}}</a>
                 @else
 
                     @if (Auth::user()->id === $perfil->usuario->id)
                         <a href={{route('perfilEdit',['perfil' => $perfil])}} class="btn mx-auto btn-primary">Agregar URL</a>
-                    
-                    @else   
+
+                    @else
                         <h5 class="text-danger">URL:&nbsp</h5>
                         <p>El usuario no agrego una URL</p>
-                    @endif                    
+                    @endif
                 @endif
             </div>
 
         </div>
-        
-        
-        
+
+
+
         @if (Auth::user()->id === $perfil->usuario->id)
             <div class="col-12">
                 <a href={{route('perfilEdit',['perfil' => $perfil])}} class="btn float-right btn-secondary"> EDITAR&nbsp

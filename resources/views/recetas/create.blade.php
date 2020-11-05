@@ -9,73 +9,75 @@
  <div class="d-flex justify-content-center">
      <h1>Crear Receta</h1>
  </div>
-  
+
   <form class='jumbotron d-block row' action="{{route('recetasStore')}}" method="POST" enctype="multipart/form-data">
-      
+
     @csrf
+
     <div class="form-group w-50 mx-auto">
       <label for="nombre">Nombre</label>
-    <input type="text" name='nombre' class="form-control" id="nombre" value="{{old('nombre')}}" placeholder="'Pan Casero'">
+      <input type="text" name='nombre' class="form-control" id="nombre" value="{{old('nombre')}}" placeholder="'Pan Casero'">
     </div>
+
     @error('nombre')
     <div class="invalid-feedback d-block w-50 mx-auto" role="alert">
       {{$message}}
     </div>
     @enderror
 
-    
+
     <div class="form-group w-50 mx-auto">
       <label for="categoria">Categoria</label>
-
       <select id='categoria' name='categoria' class="form-control">
         <option value="">--Seleccione la Categoria--</option>
-        @foreach ($categorias as $categoria)
-          <option value="{{$categoria->id}}" {{old('categoria') == $categoria->id ? 'selected' : ''}}>{{$categoria->categoria}}</option>
-        @endforeach
+          @foreach ($categorias as $categoria)
+            <option value="{{$categoria->id}}" {{old('categoria') == $categoria->id ? 'selected' : ''}}>{{$categoria->categoria}}</option>
+          @endforeach
       </select>
     </div>
+
     @error('categoria')
     <div class="invalid-feedback d-block w-50 mx-auto" role="alert">
       {{$message}}
     </div>
     @enderror
-    
+
     <div class="form-group w-50 mx-auto">
       <label for="ingredientes">Ingredientes</label>
-    <input type="hidden" name='ingredientes' class="form-control" id="ingredientes" value="{{old('ingredientes')}}">
-    <trix-editor class='bg-white' input='ingredientes'></trix-editor>
+      <input type="hidden" name='ingredientes' class="form-control" id="ingredientes" value="{{old('ingredientes')}}">
+      <trix-editor class='bg-white' input='ingredientes'></trix-editor>
     </div>
     @error('ingredientes')
     <div class="invalid-feedback d-block w-50 mx-auto" role="alert">
       {{$message}}
     </div>
     @enderror
-    
+
     <div class="form-group w-50 mx-auto">
       <label for="preparacion">Preparacion</label>
-    <input type="hidden" name='preparacion' class="form-control" id="preparacion" value="{{old('preparacion')}}">
-    <trix-editor class='bg-white' input='preparacion'></trix-editor>
+      <input type="hidden" name='preparacion' class="form-control" id="preparacion" value="{{old('preparacion')}}">
+      <trix-editor class='bg-white' input='preparacion'></trix-editor>
     </div>
     @error('preparacion')
     <div class="invalid-feedback d-block w-50 mx-auto" role="alert">
       {{$message}}
     </div>
     @enderror
-      
-      <div class="form-group w-50 mx-auto">
-        <label for="imagen">Imagen</label>
+
+    <div class="form-group w-50 mx-auto">
+      <label for="imagen">Imagen</label>
       <input type="file" name='imagen' class="form-control-file" id="imagen" value="{{old('imagen')}}" placeholder="'Pan Casero'">
-      </div>
-      @error('imagen')
-      <div class="invalid-feedback d-block w-50 mx-auto" role="alert">
-        {{$message}}
-      </div>
-      @enderror
+    </div>
+    @error('imagen')
+    <div class="invalid-feedback d-block w-50 mx-auto" role="alert">
+      {{$message}}
+    </div>
+    @enderror
 
     <div class="form-group w-50 mx-auto">
       <input type="submit" class="btn btn-dark" value="Agregar Receta">
     </div>
-  
+
   </form>
 @endsection
 

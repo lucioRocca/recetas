@@ -28,7 +28,7 @@
             </div>
         </div>
     @endif
-    
+
 @endif
 
 <div class="container" >
@@ -71,10 +71,10 @@
                                 class="btn btn-primary d-block font-weight-bold text-uppercase"
                             >Ver Receta</a>
                         </div>
-                    </div> 
+                    </div>
                 </div>
 
-            @endforeach 
+            @endforeach
         </div>
 
         <div class="d-flex justify-content-center">
